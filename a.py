@@ -8,12 +8,14 @@ import speech_recognition as sr
 from pydub import AudioSegment
 from datetime import datetime
 from functools import partial
+import random
 
 okno = CTk.CTk()
 
-chetchik = 0 
-chetchik2 = 0
-file_name = None
+okno_fremevork4_nomer_xz5 = None
+okno_fremevork4_nomer_xz6 = None
+a = 0
+
 def q9():
     okno_fremevork1_center = CTk.CTkFrame(okno,  width=1920, height=100, fg_color="Black")
     okno_fremevork1_center.grid(column=0, row=0)
@@ -68,7 +70,6 @@ def open_file():
         save_directory = "D:\\"
 
         # Получаем имя файла
-        global file_name
         file_name = os.path.basename(file)
             # Полный путь к новому файлу
         destination = os.path.join(save_directory, file_name)
@@ -163,13 +164,10 @@ def open_file():
             okno_fram_pyti = CTk.CTkLabel(okno_framvaemae_itog, text = f"Путь к вашему файлу:{audio_file_path}", fg_color = "#808080",
                                             text_color = "Black", font = ("Arial", 25, "bold"))
             okno_fram_pyti.grid(column = 0, row = 2, stick = "w", padx = 400, pady = 20)
-            okono_fram10_exit = CTk.CTkButton(okno_framvaemae_itog, text="Сохранить в историю", fg_color="Black", text_color = "#808080",
-                                                font = ("Arial",20, "bold"), command = istr)
-            okono_fram10_exit.grid(column = 0, row = 3, stick = "w", padx = 980, pady = 20)
 
             okono_fram10_exit_aaaaaa = CTk.CTkButton(okno_framvaemae_itog, text = "Выход", fg_color = "Black", text_color="#808080",
                                                         font=  ("Arial", 25, "bold"), command= q9)
-            okono_fram10_exit_aaaaaa.grid(column = 0, row = 4, stick = "w", padx = 1000, pady = 20)
+            okono_fram10_exit_aaaaaa.grid(column = 0, row = 3, stick = "w", padx = 1000, pady = 20)
 
         emae_frem_file_exit = CTk.CTkButton(emae_frem_file, text = "Верно", fg_color="Black", text_color ="#808080",
                                             font = ("Arial",24, "bold"),command = w1)
@@ -193,23 +191,6 @@ def open_file():
         emae_frem_file_exit = CTk.CTkButton(emae_frem_file, text= "Назад", fg_color="Black", text_color ="#808080",
                                             font = ("Aria",24, "bold"), command= q9)
         emae_frem_file_exit.grid(column = 0, row = 1, stick = "w", padx = 810)
-
-#этооооооо другая чать код, не залезай сюды
-def istr():
-    print(file_name)    
-def chetchik_button():#пока не надо
-
-    global chetchik
-    chetchik += 1
-    print(chetchik)
-    return chetchik
-
-
-def chetchik_button2():#тоже не надо фух
-    global chetchik2
-    chetchik2 += 1
-    print(chetchik2)
-    return chetchik2
 
 def q5():#FAQ ёу
     okno_fremevork5_FAQ = CTk.CTkFrame(okno, width=1920, height=1080, fg_color="#808080")
@@ -359,46 +340,88 @@ def q5():#FAQ ёу
     okno_fremevork5_FAQ_name_dop1_okno_text3.grid(column = 0, row = 0, stick = "w", padx = 10, pady=5)
 
 def q3():#ну тип регистрация ёу
-    okno_fremevork4_akk = CTk.CTkFrame(okno, width=1920, height=1080, fg_color="#808080")
-    okno_fremevork4_akk.grid(column = 0, row=1, stick ="w", pady=1)
-    okno_fremevork4_akk.grid_propagate(False)
+    global a
+    if a == 0:
+        okno_fremevork4_akk = CTk.CTkFrame(okno, width=1920, height=1080, fg_color="#808080")
+        okno_fremevork4_akk.grid(column = 0, row=1, stick ="w", pady=1)
+        okno_fremevork4_akk.grid_propagate(False)
 
-    okno_fremevork4_akk_fremvork5 = CTk.CTkFrame(okno_fremevork4_akk, width=300, height=300, fg_color="Black")
-    okno_fremevork4_akk_fremvork5.grid(column = 0, row = 0, stick ="n", pady= 1, padx = 640)
-    okno_fremevork4_akk_fremvork5.grid_propagate(False)
+        okno_fremevork4_akk_fremvork5 = CTk.CTkFrame(okno_fremevork4_akk, width=400, height=350, fg_color="Black")
+        okno_fremevork4_akk_fremvork5.grid(column = 0, row = 0, stick ="n", pady= 1, padx = 640)
+        okno_fremevork4_akk_fremvork5.grid_propagate(False)
 
-    okno_fremevork4_akk_vxod = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text="Вход", fg_color="Black", text_color="white",
-                                              font=('Arial', 30))
-    okno_fremevork4_akk_vxod.grid(column = 0, row = 1, padx = 90, pady = 20, stick = "w")
+        okno_fremevork4_akk_vxod = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text="Вход", fg_color="Black", text_color="white",
+                                                font=('Arial', 30))
+        okno_fremevork4_akk_vxod.grid(column = 0, row = 1, padx = 90, pady = 20, stick = "w")
 
-    okno_fremevork4_akk_nomer = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text = "Номер телефона:", fg_color="Black", text_color="white",
-                                              font=('Arial', 20))
-    okno_fremevork4_akk_nomer.grid(column=0, row=2, padx = 90, pady = 10, stick = "w")
+        okno_fremevork4_akk_nomer = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text = "Ник/имя:", fg_color="Black", text_color="white",
+                                                font=('Arial', 20))
+        okno_fremevork4_akk_nomer.grid(column=0, row=2, padx = 90, pady = 10, stick = "w")
 
-    okno_fremevork4_nomer_xz = CTk.CTkEntry(okno_fremevork4_akk_fremvork5,  placeholder_text='Введите номер', font=('Arial', 15))
-    okno_fremevork4_nomer_xz.grid(column = 0, row = 3, padx = 90, stick = "w")
+        okno_fremevork4_nomer_xz = CTk.CTkEntry(okno_fremevork4_akk_fremvork5,  placeholder_text='Введите ник/имя', font=('Arial', 15))
+        okno_fremevork4_nomer_xz.grid(column = 0, row = 3, padx = 90, stick = "w")
 
 
-    okno_fremevork4_akk_parol = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text = "Пароль:", fg_color="Black",  text_color="white",
-                                              font=('Arial', 20))
-    okno_fremevork4_akk_parol.grid(column=0, row=4, padx = 90, pady = 10, stick = "w")
+        okno_fremevork4_akk_parol = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text = "Пароль:", fg_color="Black",  text_color="white",
+                                                font=('Arial', 20))
+        okno_fremevork4_akk_parol.grid(column=0, row=5, padx = 90, pady = 10, stick = "w")
 
-    okno_fremevork4_nomer_xz2 = CTk.CTkEntry(okno_fremevork4_akk_fremvork5,  placeholder_text='Введите пароль', font=('Arial', 15))
-    okno_fremevork4_nomer_xz2.grid(column = 0, row = 5, padx = 90, stick = "w")
+        okno_fremevork4_nomer_xz2 = CTk.CTkEntry(okno_fremevork4_akk_fremvork5,  placeholder_text='Введите пароль', font=('Arial', 15))
+        okno_fremevork4_nomer_xz2.grid(column = 0, row = 6, padx = 90, stick = "w")
 
-    def text1(): #ну тип надо создать базу данных для пароля и почты-телефона
-        okno_fremevork4_nomer_xz5 =okno_fremevork4_nomer_xz.get()
-        print(okno_fremevork4_nomer_xz5)
+        def text1(): #ну тип надо создать базу данных для пароля и почты-телефона
+            global okno_fremevork4_nomer_xz5
+            okno_fremevork4_nomer_xz5 =okno_fremevork4_nomer_xz.get()
+            print(okno_fremevork4_nomer_xz5)#вывод почты, тела
 
-        okno_fremevork4_nomer_xz6 =okno_fremevork4_nomer_xz2.get()
-        print(okno_fremevork4_nomer_xz6)
+            global okno_fremevork4_nomer_xz6
+            okno_fremevork4_nomer_xz6 = okno_fremevork4_nomer_xz2.get()
+            print(okno_fremevork4_nomer_xz6)#вывод пароля
+            if okno_fremevork4_nomer_xz5 == "":
+                nyyyyy_tip_xz2 = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text="Введите ник/имя", fg_color = "Black", text_color="Red",
+                                            font = ("Arial", 15, "bold"))
+                nyyyyy_tip_xz2.grid(column = 0, row = 4, stick = "w", padx = 90)
+            else:
+                q9()
+            if okno_fremevork4_nomer_xz6 == "":
+                nyyyyy_tip_xz = CTk.CTkLabel(okno_fremevork4_akk_fremvork5, text="Введите пароль", fg_color = "Black", text_color="Red",
+                                            font = ("Arial", 15, "bold"))
+                nyyyyy_tip_xz.grid(column = 0, row = 7, stick = "w", padx = 90)
+                
+            else:
+                q9()
 
-        okno_fremevork4_akk.destroy()
+        okno_fremevork4_vxod = CTk.CTkButton(okno_fremevork4_akk_fremvork5, text="Вход", fg_color="Black",  text_color="white",
+                                                            font=("Arial", 20), command=text1)
+        okno_fremevork4_vxod.grid(column = 0, row = 8, padx = 150, pady = 20 ,stick = "w")
+        a += 1
+    else:
 
-    okno_fremevork4_vxod = CTk.CTkButton(okno_fremevork4_akk_fremvork5, text="Вход", fg_color="Black",  text_color="white",
-                                                        font=("Arial", 20), command=text1)
-    okno_fremevork4_vxod.grid(column = 0, row = 6, padx = 150, pady = 30 ,stick = "w")
+        okno_yje_voshel = CTk.CTkFrame(okno, width= 1920, height= 1080, fg_color= "#808080")
+        okno_yje_voshel.grid(column =0, row = 1)
+        okno_yje_voshel.grid_propagate(False)
 
+        okno_yje_voshel_name_privet= CTk.CTkLabel(okno_yje_voshel, text = f"Здравствуте, {okno_fremevork4_nomer_xz5}",  fg_color="#808080",
+                                                   text_color="Black", font = ("Arial",30, "bold"))
+        okno_yje_voshel_name_privet.grid(column = 0, row = 0, padx = 600, pady  = 10)
+
+        okno_yje_voshel_name = CTk.CTkButton(okno_yje_voshel, text="Ваш ник/имя:",  fg_color="Black", text_color="#808080",
+                                             font =("Arial", 25,"bold"),state="disabled")
+        okno_yje_voshel_name.grid(column = 0, row = 1, stick = "w", pady = 30, padx = 700)
+
+        okno_yje_voshel_name1 = CTk.CTkButton(okno_yje_voshel, text=okno_fremevork4_nomer_xz5, fg_color="Black", text_color="#808080",
+                                             font =("Arial", 25,"bold"),state="disabled")
+        okno_yje_voshel_name1.grid(column = 0, row = 2, stick = "w", pady = 10, padx = 750)
+
+        okno_yje_voshel_parol = CTk.CTkButton(okno_yje_voshel, text="Ваш пароль:", fg_color="Black", text_color="#808080",
+                                             font =("Arial", 25,"bold"), state="disabled")
+        okno_yje_voshel_parol.grid(column = 0, row = 3, stick = "w", pady = 30, padx = 700)
+
+        okno_yje_voshel_parol1 = CTk.CTkButton(okno_yje_voshel, text=okno_fremevork4_nomer_xz6, fg_color="Black", text_color="#808080",
+                                             font =("Arial", 25,"bold"), state="disabled")
+        okno_yje_voshel_parol1.grid(column = 0, row = 4, stick = "w", pady = 10, padx = 740)
+        
+        
 def q(): #менюшка ёу
     okno_fremevork2_menu = CTk.CTkFrame(okno, width=200, height=1080, fg_color="Black")
     okno_fremevork2_menu.grid(column = 0, row=1, stick ="w")
@@ -406,23 +429,19 @@ def q(): #менюшка ёу
 
     okno_fremevork2_menu_knopka_akkaynt = CTk.CTkButton(okno_fremevork2_menu, text="Аккаунт", fg_color = "Black", text_color="white",
                                                         font=("Arial", 30), command=q3)
-    okno_fremevork2_menu_knopka_akkaynt.grid(column = 0, row = 1, padx = 25, pady = 25, stick = "w")
+    okno_fremevork2_menu_knopka_akkaynt.grid(column = 0, row = 1, padx = 25, pady = 15, stick = "w")
 
     okno_fremevork2_menu_knopka_nastrouki = CTk.CTkButton(okno_fremevork2_menu, text="Инструкция",  fg_color = "Black",
-                                                          text_color="white", font=("Arial", 27), command=q1)
-    okno_fremevork2_menu_knopka_nastrouki.grid(column = 0, row = 2, padx = 25, pady = 15, stick = "w")
-
-    okno_fremevork2_menu_knopka_isturia = CTk.CTkButton(okno_fremevork2_menu, text="История",  fg_color = "Black",
-                                                          text_color="white", font=("Arial", 30), command=istr)
-    okno_fremevork2_menu_knopka_isturia.grid(column = 0, row = 3, padx = 25, pady = 15, stick = "w")
+                                                          text_color="white", font=("Arial", 27), command=q9)
+    okno_fremevork2_menu_knopka_nastrouki.grid(column = 0, row = 2, padx = 25, pady = 10, stick = "w")
 
     okno_fremevork2_menu_knopka_glavnai = CTk.CTkButton(okno_fremevork2_menu, text="Главная",  fg_color = "Black",
                                                           text_color="white", font=("Arial", 30), command=q9)
-    okno_fremevork2_menu_knopka_glavnai.grid(column = 0, row = 4, padx = 25, pady = 15, stick = "w")
+    okno_fremevork2_menu_knopka_glavnai.grid(column = 0, row = 3, padx = 25, pady = 15, stick = "w")
 
     okno_fremevork2_menu_knopka_FAQ = CTk.CTkButton(okno_fremevork2_menu, text="FAQ",  fg_color = "Black",
                                                           text_color="white", font=("Arial", 30), command=q5)
-    okno_fremevork2_menu_knopka_FAQ.grid(column = 0, row = 5, padx = 25, pady = 15, stick = "w")
+    okno_fremevork2_menu_knopka_FAQ.grid(column = 0, row = 4, padx = 25, pady = 15, stick = "w")
 
 def time():#хз чет шамали
         now = datetime.now()  
